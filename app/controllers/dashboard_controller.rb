@@ -29,6 +29,7 @@ class DashboardController < ApplicationController
           @status_exception += 1
         when 'Failure'
           @status_failure += 1
+          play_sound
         when 'Exception'
           @status_exception += 1
         when 'Success'
@@ -53,12 +54,12 @@ class DashboardController < ApplicationController
 
     @chuck_norris_fact = CHUCK_NORRIS_FACTS[rand(CHUCK_NORRIS_FACTS.length)]
   end
-
+ 
   private
 
   def get_cctray_feed_xml(feed_url)
     url = URI.parse(feed_url)
-    begin
+#    begin
       http = Net::HTTP.new(url.host, url.port)
       http.open_timeout = DashboardConfig.cctray_feed_open_timeout
       http.read_timeout = DashboardConfig.cctray_feed_read_timeout
@@ -70,9 +71,13 @@ class DashboardController < ApplicationController
           else cctray_error_xml(feed_url, response.message)
         end
       end
-    rescue Exception => e
-      cctray_error_xml(feed_url, e.message)
-    end
+#    rescue Exception => e
+#      cctray_error_xml(feed_url, e.message)
+#    end
+  end
+
+  def play_sound
+    `afplay "/users/sliceofnice/hard shaker beat.wav"`
   end
 
   # To make the error handling logic simple put an error message inside a
