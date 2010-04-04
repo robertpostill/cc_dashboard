@@ -6,7 +6,7 @@ DashboardConfig.cctray_feed_urls = {
   'CC.rb' => 'http://cruisecontrolrb.thoughtworks.com/XmlStatusReport.aspx',
   'CC.java' => 'http://cclive.thoughtworks.com/dashboard/cctray.xml',
   'CC.net' => 'http://ccnetlive.thoughtworks.com/ccnet/XmlStatusReport.aspx',
-  'Huson' => 'http://deadlock.netbeans.org/hudson/cc.xml'
+  'Hudson' => 'http://deadlock.netbeans.org/hudson/cc.xml'
 }
 
 # If the cctray feeds regularly timeout then you may need to increase the
